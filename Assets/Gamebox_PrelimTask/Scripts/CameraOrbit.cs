@@ -24,7 +24,6 @@ public class CameraOrbit : MonoBehaviour
         Vector3 offset = cameraLookDirection * _CamRotationRadius;
         Vector3 cameraPosition = _playerTransform.position - offset;
         
-        //Debug.Log($"{cameraRotation} * {Vector3.forward} = {cameraLookDirection}");
         transform.SetPositionAndRotation(cameraPosition, cameraRotation);
     }
     public void LookAround(InputAction.CallbackContext context)
