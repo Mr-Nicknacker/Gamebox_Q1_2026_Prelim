@@ -1,3 +1,4 @@
+using System;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ public class NPCMovement : MonoBehaviour
     [SerializeField] private float _charSpeed;
     [SerializeField] private Transform _endPoint;
     private Vector3 targetPos;
+    public static Action onPickUp;
 
     private void Start()
     {
@@ -14,11 +16,14 @@ public class NPCMovement : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log(targetPos);
-        float distance = Vector3.Distance(_endPoint.position, transform.position);
-        if (distance > 0.2f)
+        float distance = Vector3.Distance(targetPos, transform.position);
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, _charSpeed * Time.deltaTime);
+        //Debug.Log(distance);
+        if (distance <= 0.2f)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, _charSpeed * Time.deltaTime);
+            Debug.Log("arrived");
+            onPickUp?.Invoke();
+            _charSpeed = 0f;
         }   
     }
 }
