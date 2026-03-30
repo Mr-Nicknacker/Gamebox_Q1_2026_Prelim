@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 1152355319823720731}
   m_Layer: 0
   m_Name: Client3
-  m_TagString: Untagged
+  m_TagString: Client
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

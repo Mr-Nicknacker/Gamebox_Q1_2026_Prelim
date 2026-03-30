@@ -274,7 +274,7 @@ GameObject:
   - component: {fileID: 3793053535305746521}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -308,6 +308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   _playerSpeed: 5
+  _rotationSpeed: 5
   _mainCameraTransform: {fileID: 0}
 --- !u!54 &3793053535305746521
 Rigidbody:
