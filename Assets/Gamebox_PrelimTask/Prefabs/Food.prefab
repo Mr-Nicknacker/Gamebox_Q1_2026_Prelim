@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5826654893638910599}
   - component: {fileID: 7408365931804606544}
   - component: {fileID: 6935560592066846377}
+  - component: {fileID: 6928180015290945447}
   m_Layer: 0
   m_Name: Food
   m_TagString: Order
@@ -27,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6082115449954384937}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.05592251, y: 1.1568764, z: -3.3892655}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -113,3 +114,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2215210132878215497, guid: 27b80093a95e6714ca0420ac66b7b80f, type: 3}
+--- !u!114 &6928180015290945447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6082115449954384937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db34268e0cd03c4897c62e8595b774d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FoodDelivery
+  _pickupPoint: {fileID: 0}
+  _animationJumpPower: 1.5
+  _animationSpeed: 0.7
+  _animationJumpsNumber: 1

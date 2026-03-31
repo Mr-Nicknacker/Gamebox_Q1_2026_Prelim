@@ -1,5 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
+using System;
 public class FoodDelivery : MonoBehaviour
 {
     [SerializeField] private Transform _pickupPoint;
@@ -8,11 +9,11 @@ public class FoodDelivery : MonoBehaviour
     [SerializeField] private float _animationJumpPower;
     [SerializeField] private float _animationSpeed;
     [SerializeField] private int _animationJumpsNumber;
+    private Wallet _playerWallet;
     private void Start()
     {
         _initialTransform = transform;
-        Debug.Log(_initialTransform.position);
-        GiveFood();
+        _playerWallet = new Wallet();
     }
     private void GiveFood()
     {
@@ -27,15 +28,16 @@ public class FoodDelivery : MonoBehaviour
                 gameObject.SetActive(false);
                 transform.position = _initialTransform.position;
                 transform.localScale = _initialTransform.localScale;
+                _playerWallet.RemoveResource(20);
                 giveFoodAnimation.Kill();
             });
     }
-    //private void OnEnable()
-    //{
-    //    NPCMovement.onPickUp += GiveFood;
-    //}
-    //private void OnDisable()
-    //{
-    //    NPCMovement.onPickUp -= GiveFood;
-    //}
+    private void OnEnable()
+    {
+        Payment.OnMoneyPaid += GiveFood;
+    }
+    private void OnDisable()
+    {
+        Payment.OnMoneyPaid -= GiveFood;
+    }
 }

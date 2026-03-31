@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 
-public class GivePurchase : MonoBehaviour
+public class PickupZone : MonoBehaviour
 {
     [SerializeField] private string _clientTag;
+    public static Action onClientReadyToPickUp;
 
     private Transform orderPosition;
 
@@ -10,7 +12,7 @@ public class GivePurchase : MonoBehaviour
     {
         if (other.CompareTag(_clientTag))
         {
-            Debug.Log("Collided");
+            onClientReadyToPickUp?.Invoke();
         }
     }
 
