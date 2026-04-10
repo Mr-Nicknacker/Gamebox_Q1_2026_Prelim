@@ -4,26 +4,26 @@ using UnityEngine;
 
 public class WarningDisplay : MonoBehaviour
 {
-    [SerializeField]private TMP_Text _warningTextField;
-    
+    [SerializeField] private TMP_Text _warningTextField;
+    [SerializeField] private float _warningDisplayTime=3f;
+
     private void DisplayWarning(string warningText)
     {
         Debug.Log(warningText);
         StartCoroutine(Display(warningText));
-        _warningTextField.text = string.Empty;
-        StopCoroutine(Display(warningText));
     }
     private IEnumerator Display(string text)
     {
         _warningTextField.text = text;
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(_warningDisplayTime);
+        _warningTextField.text = string.Empty;
     }
     private void OnEnable()
     {
-        Resource.OnInsufficientResource += DisplayWarning;
+        PlayerWallet.OnInsufficientResource += DisplayWarning;
     }
     private void OnDisable()
     {
-        Resource.OnInsufficientResource -= DisplayWarning;
+        PlayerWallet.OnInsufficientResource -= DisplayWarning;
     }
 }

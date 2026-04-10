@@ -10,10 +10,10 @@ public class MoneyView : MonoBehaviour
     }
     private void OnEnable()
     {
-        Wallet.OnBalanceUpdate += DisplayWallet;
+        PlayerWallet.OnBalanceUpdate += DisplayWallet;
     }
     private void OnDisable()
     {
-        Wallet.OnBalanceUpdate -= DisplayWallet;
+        PlayerWallet.OnBalanceUpdate -= DisplayWallet;
     }
 }

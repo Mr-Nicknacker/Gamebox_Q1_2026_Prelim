@@ -2,7 +2,7 @@ using DG.Tweening;
 using System;
 using UnityEngine;
 
-public class Payment : MonoBehaviour
+public class CharacterPay : MonoBehaviour
 {
     [SerializeField] private Transform _cashRegisterPoint;
     [SerializeField] private float _animationJumpPower;
@@ -10,7 +10,9 @@ public class Payment : MonoBehaviour
     [SerializeField] private int _animationJumpsNumber;
     [SerializeField] private float _coinRotationSpeed;
 
-    private Wallet _playerWallet;
+    // добавить скриптбл обжект со списком еды в кафе: просто список цен, без разных объектов
+
+    private PlayerWallet _playerWallet;
     private Vector3 _initialScale;    
     public static Action OnMoneyPaid;
 
@@ -18,7 +20,7 @@ public class Payment : MonoBehaviour
     {
         _initialScale = transform.localScale;
         transform.localScale = Vector3.zero;
-        _playerWallet = new Wallet();
+        _playerWallet = new PlayerWallet();
     }
     private void OnEnable()
     {
@@ -43,9 +45,13 @@ public class Payment : MonoBehaviour
                 {
                     gameObject.SetActive(false);
                     OnMoneyPaid?.Invoke();
-                    _playerWallet.AddResource(10);
+                    PayForFood(10);
                     giveMoneyAnimation.Kill();
                 });
+    }
+    private void PayForFood(int foodPrice)
+    {
+        _playerWallet.AddResource(foodPrice);
     }
 
 }

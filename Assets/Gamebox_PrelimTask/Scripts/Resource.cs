@@ -5,8 +5,7 @@ public abstract class Resource
 {
     public static Action<int> OnBalanceUpdate;
     public static Action<string> OnInsufficientResource;
-    protected static int _currentBalance { get; private set; }
-    protected string warningText;
+    public static int _currentBalance { get; protected set; }
     public void AddResource(int resource)
     {
         if (resource < 0)
@@ -20,21 +19,11 @@ public abstract class Resource
         }
     }
 
-    public void RemoveResource(int resource)
+    public abstract void RemoveResource(int resource);
+    public void EmptyResourcePool()
     {
-        if (resource < 0)
-        {
-            _currentBalance -= 0;
-        }
-        if (_currentBalance-resource>=0)
-        {
-            _currentBalance -= resource;
-            OnBalanceUpdate?.Invoke(_currentBalance);
-        }
-        else
-        {
-            OnInsufficientResource?.Invoke(warningText);
-        }
+        _currentBalance = 0;
+        OnBalanceUpdate?.Invoke(_currentBalance);
     }
 
 }
