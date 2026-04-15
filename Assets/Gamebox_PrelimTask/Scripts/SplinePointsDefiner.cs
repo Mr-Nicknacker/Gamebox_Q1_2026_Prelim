@@ -16,17 +16,12 @@ public class SplinePointsDefiner : MonoBehaviour
         _splineContainer = GetComponent<SplineContainer>();
         _firstPointPosition = new(_firstPoint.position.x, transform.position.y, _firstPoint.position.z);
         _lastPointPosition = new(_lastPoint.position.x, transform.position.y, _lastPoint.position.z);
-
-    }
-    private void LateUpdate()
-    {
         SetFirstRoutePoint(_splineContainer, _firstPointPosition);
         SetLastRoutePoint(_splineContainer, _lastPointPosition);
-        
     }
     public void SetFirstRoutePoint(SplineContainer splineContainer, Vector3 pointPositon)
     {
-        Spline spline = splineContainer.Spline;
+        Spline spline = splineContainer.Splines[0];
         BezierKnot firstKnot = spline[0];
         firstKnot.Position = _splineContainer.transform.InverseTransformPoint(pointPositon);
         spline.SetKnot(0, firstKnot);
