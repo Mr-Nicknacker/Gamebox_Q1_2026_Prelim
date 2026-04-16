@@ -6,7 +6,7 @@ public class FoodSpawner : MonoBehaviour, ISpawner
 {
     [SerializeField] private float _cookingTime;
     [SerializeField] private GameObject _foodObject;
-    Coroutine _runningCoroutine;
+    private Coroutine _runningCoroutine;
     private void Start()
     {
         _runningCoroutine=StartCoroutine(Spawn());
