@@ -35,4 +35,9 @@ public class SplinePointsDefiner : MonoBehaviour
         lastKnot.Position = _splineContainer.transform.InverseTransformPoint(pointPositon);
         spline.SetKnot(lastKnotIndex, lastKnot);
     }
+    public void InitializeRoute() { 
+    }
+    // Здесь строим и назначаем дорожки, по которым будет ходить аниматор
+    // В аниматор будем передавать дорогу по которой он должен водить НИПа
+    // Добавить сюда методы, которые будут цеплять узлы к анкерным точкам
 }
